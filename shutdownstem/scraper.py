@@ -32,8 +32,7 @@ def scrape_hashtag_and_save(api: tweepy.API, hashtag: str = "shutdownstem") -> N
     is_rt = []
     count = 0
 
-    for tweet in tweepy.Cursor(api.search, q=search_hashtag, count=100).items():
-    #for tweet in api.search(q=search_hashtag, count=100):
+    for tweet in tweepy.Cursor(api.search, q=search_hashtag, count=300).items():
         raw_tweets.append(tweet)
         authors.append(tweet.author.screen_name)
         text.append(tweet.text)
@@ -61,10 +60,7 @@ def scrape_hashtag_and_save(api: tweepy.API, hashtag: str = "shutdownstem") -> N
         print(f"[*] raw tweets serialized to {filename_str}.pkl")
 
 
-def main():
+def main(hashtag: str = "shutdownstem"):
+    print(f'[*] scraping #{hashtag}')
     api = get_api()
-    scrape_hashtag_and_save(api)
-
-
-if __name__=="__main__":
-    main()
+    scrape_hashtag_and_save(api, hashtag)

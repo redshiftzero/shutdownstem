@@ -3,6 +3,8 @@ twitter analysis of #shutdownstem
 
 ## Setup
 
+This code requires Python 3.7. In a virtualenv:
+
 ```
 pip install -r requirements.txt
 export TWITTER_SCRAPE_ACCESS_KEY=yoursecrethere
